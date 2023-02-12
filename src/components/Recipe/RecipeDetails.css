@@ -1,0 +1,112 @@
+.recipe__details{
+  display: flex;
+    align-items: center;
+    padding: 7.5rem 8rem 3.5rem 8rem;
+}
+
+.recipe__info{
+  font-size: 1.65rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.recipe__info:not(:last-child) {
+  margin-right: 4.5rem;
+}
+
+.recipe__info-icon {
+  height: 2.35rem;
+  width: 2.35rem;
+  fill: #694e91;
+  margin-right: 1.15rem;
+}
+
+.recipe__info-data {
+  margin-right: 0.5rem;
+  font-weight: 700;
+}
+
+.recipe__info-buttons {
+  display: flex;
+  margin-left: 1.6rem;
+  transform: translateY(-1px);
+}
+
+.btn--tiny {
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.btn--tiny img{
+  height: 100%;
+  width: 100%;
+  fill: #694e91;
+  transition: all 0.3s;
+}
+
+.btn--tiny:focus{
+  outline: none;
+}
+
+.btn--tiny:hover img{
+  fill: #694e91;
+  transform: translateY(-1px);
+}
+
+.btn--tiny:active img{
+  fill:#694e91;
+  transform: translateY(0);
+}
+
+.btn--tiny:not(:last-child){
+  margin-right: 0.3rem;
+}
+
+.recipe__user-generated {
+  background-color: darken(#fbf8f7, 2%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 10rem;
+  margin-left: auto;
+  margin-right: 1.75rem;
+}
+
+.recipe__user-generated img{
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: #694e91;
+
+}
+
+.btn--round {
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  height: 4.5rem;
+  width: 4.5rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%,rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%,rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%,rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%,rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%,rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%,rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%),linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%,rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%,rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%,rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%,rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%,rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%,rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%,rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
+}
+.btn--round:hover {
+  transform: scale(1.07);
+}
+
+
+.btn--round:focus {
+    outline: none;
+  }
+
+.btn--round img {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: #fff;
+  }
