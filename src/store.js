@@ -11,13 +11,13 @@ const reducer = combineReducers({
   wishList : addToWishlistReducer,
 })
 
-// const wishlistFromStorage = localStorage.getItem('bookmarkItem')
-  // ? JSON.parse(localStorage.getItem('bookmarkItem'))
-  // : [];
+const wishlistFromStorage = localStorage.getItem('bookmarkItems')
+  ? JSON.parse(localStorage.getItem('bookmarkItems'))
+  : [];
 
 
 const initialState = {
-  // bookmarkItems : [],
+  cart : {cartItems : wishlistFromStorage }
 }
 
 const middleWare = [thunk]

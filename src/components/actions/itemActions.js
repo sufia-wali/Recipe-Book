@@ -41,8 +41,9 @@ export const setCurrentPage = (page) => async (dispatch) =>{
 
 export const addToWishlist = (data) => async (dispatch,getState) => {
   try{
+    console.log(getState());
     dispatch({type : 'ADD_WHISHLIST', payload : data})
-    localStorage.setItem('bookmarkItems', JSON.stringify(getState().wishList.bookmarkItems))
+    localStorage.setItem('bookmarkItems', JSON.stringify(getState().wishList.cartItems))
   } catch(error){
     dispatch({type : 'ERROR_ID'})
   }

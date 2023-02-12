@@ -31,10 +31,10 @@ export const itemDetailReducer = (state={product : {ingredients : []}, loading :
   }
 }
 
-export const addToWishlistReducer = (state = {bookmarkItems : []},action) =>{
+export const addToWishlistReducer = (state = { cartItems : []},action) =>{
   switch(action.type){
     case 'ADD_WHISHLIST':
-      return {...state, bookmarkItems : [...state.bookmarkItems, action.payload]}
+      return {...state, cartItems : [...state.cartItems, action.payload]}
     default:
       return state
   }

@@ -6,9 +6,15 @@ import bookmark from '../../Image/bookmark.png';
 import add from '../../Image/add.png';
 import { useDispatch } from 'react-redux';
 import { listItem } from '../actions/itemActions';
+import { useSelector } from 'react-redux';
 import Error from '../Modal/Error';
 
+
 export default function Header() {
+
+  const cart = useSelector(state => state.wishList)
+  const {cartItems} = cart
+  console.log(cartItems);
 
   const [text, setText] = useState('');
 
@@ -51,11 +57,24 @@ export default function Header() {
               </button>
 
               <div className="bookmarks">
-                <ul className="bookmarks__list">
-                  <div className="message">
+                {cartItems.length === 0 ?
+                  (
+                    <div className="message">
                     <Error children="No bookmark yet, Find a recipe and bookmark it!" />
                   </div>
+                  ):(
+                <ul className="bookmarks__list">
+                    {cartItems.map((item)=>{
+                      return (
+                        <div>
+                          <p>{item.title}</p>
+                          <p>{item.publisher}</p>
+                        </div>
+                      )
+                    })}
                 </ul>
+                    )
+                }
               </div>
             </li>
           </ul>

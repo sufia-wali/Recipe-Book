@@ -8,11 +8,15 @@ import bookmark from '../../Image/bookmark.png';
 import { useDispatch } from 'react-redux';
 import { addToWishlist } from '../actions/itemActions';
 
+
 function RecipeDetails({pdt}) {
   const dispatch = useDispatch()
+
   const whisListHandler = ()=>{
     dispatch(addToWishlist(pdt))
   }
+
+
   return (
     <Fragment>
     <figure className='recipe__fig'>
