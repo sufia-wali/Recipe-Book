@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useState, useEffect} from 'react'
 import './RecipeDetails.css';
 import time from '../../Image/time.png';
 import user from '../../Image/user.png';
@@ -6,15 +6,44 @@ import minus from '../../Image/minus.png';
 import plus from '../../Image/plus.png';
 import bookmark from '../../Image/bookmark.png';
 import { useDispatch } from 'react-redux';
-import { addToWishlist } from '../actions/itemActions';
+import { addToWishlist, removeFromWishlist, updateIngredient } from '../actions/itemActions';
 
 
-function RecipeDetails({pdt}) {
+
+function RecipeDetails({pdt,serv}) {
+
+  const [flag,setFlag] = useState(true)
+  // console.log(pdt);
+  const [serving,setServing] = useState(pdt.servings)
   const dispatch = useDispatch()
 
   const whisListHandler = ()=>{
-    dispatch(addToWishlist(pdt))
+    setFlag(()=>!flag)
+    if(flag){
+      dispatch(addToWishlist(pdt))
+    }
+    else{
+      dispatch(removeFromWishlist(pdt.id))
+    }
   }
+
+  const incServing = ()=>{
+    setServing(()=>serving+1)
+    serv(serving)
+  }
+
+  const decServing = ()=>{
+    setServing(()=>serving-1)
+    serv(serving)
+  }
+
+  // useEffect(() => {
+  //   console.log(serving);
+  //   dispatch(updateIngredient(serving))
+
+  // }, [serving,dispatch])
+
+  // const[count, setCount] = useState()
 
 
   return (
@@ -34,14 +63,14 @@ function RecipeDetails({pdt}) {
 
       <div className="recipe__info">
         <img src={user} alt="user" className="recipe__info-icon" />
-        <span className="recipe__info-data recipe__info-data--people">{pdt.servings}</span>
+        <span className="recipe__info-data recipe__info-data--people" >{serving}</span>
         <span className="recipe__info-text">servings</span>
 
         <div className="recipe__info-buttons">
-          <button className="btn--tiny btn--increase-servings">
+          <button className="btn--tiny btn--increase-servings" onClick={decServing}>
             <img src={minus} alt="minus" />
           </button>
-          <button className="btn--tiny btn--increase-servings">
+          <button className="btn--tiny btn--increase-servings" onClick={incServing}>
             <img src={plus} alt="plus" />
           </button>
         </div>

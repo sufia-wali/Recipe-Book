@@ -2,6 +2,7 @@ import React from 'react'
 import './RecipeDirection.css';
 import rightarrow from '../../Image/rightarrow.png';
 
+
 function RecipeDirection() {
   return (
     <div className="recipe__directions">

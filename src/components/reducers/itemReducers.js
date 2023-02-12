@@ -1,6 +1,6 @@
 import { ITEM_LIST_REQUEST, ITEM_LIST_SUCCESS, ITEM_LIST_FAILURE, SET_CURRENT_PAGE } from "../../constants/itemConstants";
 import { ITEM_DETAIL_REQUEST,ITEM_DETAIL_SUCCESS, ITEM_DETAIL_FAIL } from "../../constants/itemConstants";
-
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../../constants/itemConstants";
 
 
 export const itemListReducer = (state = {products : [], loading : false, error : '', currentPage : 1, pageSize : 10 }, action) =>{
@@ -24,6 +24,8 @@ export const itemDetailReducer = (state={product : {ingredients : []}, loading :
       return {...state, loading : true};
     case ITEM_DETAIL_SUCCESS:
       return {...state, loading : false, product : action.payload};
+    // case 'UPDATE_ING':
+      // return {...state,ingredients : state.ingredients.map(x=> x.quantity+action.payload)}
     case ITEM_DETAIL_FAIL:
       return {...state, loading : false, error : action.payload}
     default:
@@ -35,9 +37,19 @@ export const addToWishlistReducer = (state = { cartItems : []},action) =>{
   switch(action.type){
     case 'ADD_WHISHLIST':
       return {...state, cartItems : [...state.cartItems, action.payload]}
+    case REMOVE_FROM_CART :
+      return {...state, cartItems : state.cartItems.filter(x=>x.id !== action.payload)}
     default:
       return state
   }
 }
 
+// export const updateIngredientReducer = (state,action) =>{
+//   switch(action.type){
+//     case 'UPDATE_ING':
+//       return {...state,ingredients : state.ingredients.map(x=> x.quantity+action.payload)}
+//     default :
+//     return state
+//   }
+// }
 

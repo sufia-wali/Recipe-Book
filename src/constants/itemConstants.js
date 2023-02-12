@@ -9,3 +9,6 @@ export const ITEM_DETAIL_FAIL = 'ITEM_DETAIL_FAIL'
 export const ITEM_LIST_SEARCH = 'ITEM_LIST_SEARCH'
 
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'

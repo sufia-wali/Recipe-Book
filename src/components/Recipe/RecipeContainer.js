@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment,useState } from 'react'
 import './RecipeContainer.css';
 import RecipeDetails from './RecipeDetails';
 import RecipeIngredients from './RecipeIngredients';
@@ -7,9 +7,18 @@ import { useSelector } from 'react-redux';
 import Spinner from '../UI/Spinner';
 import Error from '../Modal/Error.js';
 
+
 function RecipeContainer() {
   const selectedItem = useSelector(state => state.productDetail)
   const { loading, product, error } = selectedItem;
+  const [S,setS] = useState(product.servings)
+
+  // const updatedIng = useSelector(state => state.)
+  // console.log(updatedIng);
+  const servingHandler = (v) =>{
+    setS(v)
+    console.log(S);
+  }
 
   return (
     <div className='recipe'>
@@ -24,8 +33,8 @@ function RecipeContainer() {
             : error ? (<Error children="Something Went Wrong"/>)
               : (
                 <Fragment>
-                  <RecipeDetails pdt={product} />
-                  <RecipeIngredients ingredient={product} />
+                  <RecipeDetails pdt={product} serv={servingHandler} />
+                  <RecipeIngredients ingredient={product} val={S} />
                   <RecipeDirection />
                 </Fragment>
               )
