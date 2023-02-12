@@ -1,31 +1,19 @@
 import React, { Fragment } from 'react';
 import './RecipeList.css';
 import Spinner from '../UI/Spinner';
-import { useSelector } from "react-redux";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { listDetail } from '../actions/itemActions';
-import RecipeContainer from './RecipeContainer';
-import {Link} from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom';
-// import
-
+import Error from '../Modal/Error';
 
 function RecipeList() {
 
   const dispatch = useDispatch()
-  // const history = useNavigate()
   const productList = useSelector(state => state.productList)
   const { loading, products, error, currentPage, pageSize } = productList
-  // console.log(loading,products,error,currentPage,pageSize)
 
 
   const newProducts = products.slice(currentPage * pageSize - pageSize, currentPage * pageSize)
-  console.log(newProducts)
   const detailHandler = (id) => {
-    // e.preventDefault()
-    console.log(id);
-    // history(`/${id}`)
-
     dispatch(listDetail(id))
   }
 
@@ -35,22 +23,22 @@ function RecipeList() {
       {
         newProducts.length ===0 ?
         (
-          <div>
-            <p>No recipes found for your query! Please try again ;)</p>
+          <div className='message'>
+            <p>No recipes found for your query! Please try again </p>
           </div>
           )
         :
         loading
           ? (<Spinner />)
           : error
-            ? (<p>Something Went Wrong</p>)
+            ? (<Error children="Something Went Wrong" />)
             : (
               <div className='recipe-results'>
                 <ul className='results'>
                   {newProducts.map((product) => {
                     return (
                       <li className="preview" key={product.id} onClick={() => detailHandler(product.id)}>
-                        <div  className="preview__link preview__link--active">
+                        <span className="preview__link preview__link--active">
                           <figure className='preview__fig'>
                             <img src={product.image_url} alt="recipe" />
                           </figure>
@@ -62,7 +50,7 @@ function RecipeList() {
                             <div className="preview__user-generated">
                             </div>
                           </div>
-                        </div>
+                        </span>
                       </li>
                     )
                   })}

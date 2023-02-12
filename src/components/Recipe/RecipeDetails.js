@@ -1,16 +1,14 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import './RecipeDetails.css';
 import time from '../../Image/time.png';
 import user from '../../Image/user.png';
 import minus from '../../Image/minus.png';
 import plus from '../../Image/plus.png';
 import bookmark from '../../Image/bookmark.png';
-import { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToWishlist } from '../actions/itemActions';
 
 function RecipeDetails({pdt}) {
-  // console.log("my products",pdt);
   const dispatch = useDispatch()
   const whisListHandler = ()=>{
     dispatch(addToWishlist(pdt))
@@ -53,7 +51,6 @@ function RecipeDetails({pdt}) {
       </button>
     </div>
     </Fragment>
-
   )
 }
 

@@ -6,7 +6,6 @@ export const listItem = (text) =>async (dispatch) =>{
   try{
     dispatch({type:ITEM_LIST_REQUEST});
     const response = await axios.get(`https://forkify-api.herokuapp.com/api/v2/recipes?search=${text}`)
-    console.log(response)
     const clearResponse = response['data']['data']['recipes'];
     dispatch({type : ITEM_LIST_SUCCESS, payload : clearResponse });
   } catch (error){
@@ -22,7 +21,6 @@ export const listDetail = (id) => async (dispatch) => {
     dispatch({type : ITEM_DETAIL_REQUEST});
     const response = await axios.get(`https://forkify-api.herokuapp.com/api/v2/recipes/${id}`)
     const detailData = response['data']['data']['recipe']
-    console.log("mydetaildata", detailData);
     dispatch({type : ITEM_DETAIL_SUCCESS, payload : detailData})
   }catch(error){
     dispatch({type : ITEM_DETAIL_FAIL, payload : 'Something went wrong!'})
@@ -43,7 +41,6 @@ export const setCurrentPage = (page) => async (dispatch) =>{
 
 export const addToWishlist = (data) => async (dispatch,getState) => {
   try{
-    console.log(getState());
     dispatch({type : 'ADD_WHISHLIST', payload : data})
     localStorage.setItem('bookmarkItems', JSON.stringify(getState().wishList.bookmarkItems))
   } catch(error){

@@ -101,7 +101,7 @@
 }
 
 .nav__btn{
-  display: flex;
+    display: flex;
     align-items: center;
     height: 100%;
     font-family: inherit;
@@ -151,10 +151,32 @@
   list-style:none;
 }
 
-.bookmarks:hover , .nav__btn--bookmarks:hover + {
+/* .bookmarks__field{
+  cursor: pointer;
+  padding:0 4rem;
+  display: flex;
+  align-items: center;
+  height:100%;
+  transition: all 0.3s;
+} */
+
+.bookmarks:hover , .nav__btn--bookmarks:hover + .bookmarks {
 visibility: visible;
 opacity: 1;
 }
 
+.message{
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+  display: flex;
+}
+
+.message p{
+  margin-left: 1.5rem;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    font-weight: 600
+}
 
 

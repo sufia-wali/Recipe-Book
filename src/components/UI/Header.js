@@ -1,14 +1,12 @@
-import React,{Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import './Header.css';
 import logo from '../../Image/logo.webp';
 import search from '../../Image/search.png';
-import nobookmark from '../../Image/nobookmark.png';
 import bookmark from '../../Image/bookmark.png';
 import add from '../../Image/add.png';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { listItem } from '../actions/itemActions';
-
+import Error from '../Modal/Error';
 
 export default function Header() {
 
@@ -23,10 +21,7 @@ export default function Header() {
     e.preventDefault();
     dispatch(listItem(text))
     setText('')
-
   }
-
-
 
   return (
     <Fragment>
@@ -58,10 +53,7 @@ export default function Header() {
               <div className="bookmarks">
                 <ul className="bookmarks__list">
                   <div className="message">
-                    <div>
-                      <img src={nobookmark} alt="nobookmakr" />
-                    </div>
-                    <p>No bookmarks , Find a recipe and bookmark it.</p>
+                    <Error children="No bookmark yet, Find a recipe and bookmark it!" />
                   </div>
                 </ul>
               </div>

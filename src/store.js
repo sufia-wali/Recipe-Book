@@ -8,7 +8,7 @@ import { itemListReducer,itemDetailReducer,addToWishlistReducer } from "./compon
 const reducer = combineReducers({
   productList : itemListReducer,
   productDetail : itemDetailReducer,
-  wishList : addToWishlistReducer
+  wishList : addToWishlistReducer,
 })
 
 // const wishlistFromStorage = localStorage.getItem('bookmarkItem')
@@ -17,7 +17,7 @@ const reducer = combineReducers({
 
 
 const initialState = {
-  bookmarkItems : []
+  // bookmarkItems : [],
 }
 
 const middleWare = [thunk]
