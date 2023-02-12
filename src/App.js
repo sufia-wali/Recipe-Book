@@ -1,10 +1,12 @@
 import './App.css';
+import React from 'react';
 import Header from "./components/UI/Header";
 import RecipeList from './components/Recipe/RecipeList';
 import Pagination from './components/UI/Pagination';
 import RecipeContainer from './components/Recipe/RecipeContainer';
 
 function App() {
+
   return (
     <div className="container">
       <Header />
