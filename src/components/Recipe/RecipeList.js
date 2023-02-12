@@ -5,21 +5,27 @@ import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import { listDetail } from '../actions/itemActions';
 import RecipeContainer from './RecipeContainer';
+import {Link} from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom';
+// import
 
 
 function RecipeList() {
 
   const dispatch = useDispatch()
+  // const history = useNavigate()
   const productList = useSelector(state => state.productList)
   const { loading, products, error, currentPage, pageSize } = productList
   // console.log(loading,products,error,currentPage,pageSize)
 
 
   const newProducts = products.slice(currentPage * pageSize - pageSize, currentPage * pageSize)
-  // console.log(newProducts)
+  console.log(newProducts)
   const detailHandler = (id) => {
     // e.preventDefault()
     console.log(id);
+    // history(`/${id}`)
+
     dispatch(listDetail(id))
   }
 
@@ -27,6 +33,13 @@ function RecipeList() {
   return (
     <Fragment>
       {
+        newProducts.length ===0 ?
+        (
+          <div>
+            <p>No recipes found for your query! Please try again ;)</p>
+          </div>
+          )
+        :
         loading
           ? (<Spinner />)
           : error
@@ -37,7 +50,7 @@ function RecipeList() {
                   {newProducts.map((product) => {
                     return (
                       <li className="preview" key={product.id} onClick={() => detailHandler(product.id)}>
-                        <a href="/" className="preview__link preview__link--active">
+                        <div  className="preview__link preview__link--active">
                           <figure className='preview__fig'>
                             <img src={product.image_url} alt="recipe" />
                           </figure>
@@ -49,7 +62,7 @@ function RecipeList() {
                             <div className="preview__user-generated">
                             </div>
                           </div>
-                        </a>
+                        </div>
                       </li>
                     )
                   })}
@@ -58,8 +71,6 @@ function RecipeList() {
             )
       }
     </Fragment>
-
-
   )
 }
 

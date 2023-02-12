@@ -18,15 +18,26 @@ export const itemListReducer = (state = {products : [], loading : false, error :
   }
 };
 
-export const itemDetailReducer = (state={products : [], loading : false,error : ''},action)=>{
+export const itemDetailReducer = (state={product : {ingredients : []}, loading : false,error : ''}, action) =>{
   switch(action.type){
     case ITEM_DETAIL_REQUEST:
       return {...state, loading : true};
     case ITEM_DETAIL_SUCCESS:
-      return {...state, loading : false};
+      return {...state, loading : false, product : action.payload};
     case ITEM_DETAIL_FAIL:
-      return {...state, loading : false, error : 'Detail Not Found!'}
+      return {...state, loading : false, error : action.payload}
     default:
       return state;
   }
 }
+
+export const addToWishlistReducer = (state = {bookmarkItems : []},action) =>{
+  switch(action.type){
+    case 'ADD_WHISHLIST':
+      return {...state, bookmarkItems : [...state.bookmarkItems, action.payload]}
+    default:
+      return state
+  }
+}
+
+
