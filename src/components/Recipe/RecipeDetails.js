@@ -9,11 +9,9 @@ import { useDispatch } from 'react-redux';
 import { addToWishlist, removeFromWishlist, updateIngredient } from '../actions/itemActions';
 
 
-
 function RecipeDetails({pdt,serv}) {
 
   const [flag,setFlag] = useState(true)
-  // console.log(pdt);
   const [serving,setServing] = useState(pdt.servings)
   const dispatch = useDispatch()
 
@@ -26,15 +24,20 @@ function RecipeDetails({pdt,serv}) {
       dispatch(removeFromWishlist(pdt.id))
     }
   }
-
   const incServing = ()=>{
-    setServing(()=>serving+1)
-    serv(serving)
+  setServing(serving+1);
+  serv(serving+1);
   }
 
   const decServing = ()=>{
-    setServing(()=>serving-1)
-    serv(serving)
+    setServing((oldServing)=>{
+      let tempServing = oldServing-1;
+      if(tempServing < 1){
+        tempServing = 1;
+      }
+    return tempServing;
+    })
+    serv(serving-1)
   }
 
   // useEffect(() => {

@@ -13,7 +13,6 @@ export default function Header() {
 
   const cart = useSelector(state => state.wishList)
   const { cartItems } = cart
-  console.log(cartItems);
 
   const [text, setText] = useState('');
 
