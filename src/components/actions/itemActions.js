@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ITEM_LIST_SUCCESS,ITEM_LIST_REQUEST,ITEM_LIST_FAILURE, SET_CURRENT_PAGE } from "../../constants/itemConstants";
 import { ITEM_DETAIL_REQUEST,ITEM_DETAIL_SUCCESS,ITEM_DETAIL_FAIL } from "../../constants/itemConstants";
-import { ADD_TO_CART,REMOVE_FROM_CART } from "../../constants/itemConstants";
+import { REMOVE_FROM_CART } from "../../constants/itemConstants";
 
 
 export const listItem = (text) =>async (dispatch) =>{
@@ -28,18 +28,6 @@ export const listDetail = (id) => async (dispatch) => {
     dispatch({type : ITEM_DETAIL_FAIL, payload : 'Something went wrong!'})
   }
 }
-
-
-// export const updateIngredient = (val) => async (dispatch,getState) =>{
-//   try{
-//     console.log(getState());
-//     dispatch({type : 'UPDATE_ING', payload : val })
-//   }catch(error){
-//     dispatch({type : 'UPDATE_ERR', payload : 'Not updated'})
-
-//   }
-// }
-
 
 
 export const setCurrentPage = (page) => async (dispatch) =>{
@@ -70,5 +58,3 @@ export const removeFromWishlist = (id) => async (dispatch,getState) => {
     dispatch({type : 'ERROR_ID'})
   }
 }
-
-// export const updateQuantity
