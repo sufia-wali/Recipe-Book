@@ -7,15 +7,14 @@ import { useSelector } from 'react-redux';
 import Spinner from '../UI/Spinner';
 import Error from '../Modal/Error.js';
 
-
 function RecipeContainer() {
   const selectedItem = useSelector(state => state.productDetail)
   const { loading, product, error } = selectedItem;
-  const [S,setS] = useState(4)
-  // const [S,setS] = useState(product.servings)
 
-  const servingHandler = (v) =>{
-    setS(v)
+  const [updatedServings,setUpdatedServings] = useState(4);
+
+  const servingHandler = (updatedValue) =>{
+    setUpdatedServings(updatedValue);
   }
 
   return (
@@ -32,7 +31,7 @@ function RecipeContainer() {
               : (
                 <Fragment>
                   <RecipeDetails pdt={product} serv={servingHandler} />
-                  <RecipeIngredients ingredient={product} val={S} />
+                  <RecipeIngredients ingredient={product} val={updatedServings} />
                   <RecipeDirection />
                 </Fragment>
               )

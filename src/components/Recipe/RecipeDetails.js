@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react'
+import React, {Fragment, useState} from 'react'
 import './RecipeDetails.css';
 import time from '../../Image/time.png';
 import user from '../../Image/user.png';
@@ -6,7 +6,7 @@ import minus from '../../Image/minus.png';
 import plus from '../../Image/plus.png';
 import bookmark from '../../Image/bookmark.png';
 import { useDispatch } from 'react-redux';
-import { addToWishlist, removeFromWishlist, updateIngredient } from '../actions/itemActions';
+import { addToWishlist, removeFromWishlist } from '../actions/itemActions';
 
 
 function RecipeDetails({pdt,serv}) {
@@ -14,7 +14,7 @@ function RecipeDetails({pdt,serv}) {
   const [flag,setFlag] = useState(true)
   const [serving,setServing] = useState(pdt.servings)
   const dispatch = useDispatch()
-
+  let tempServing = serving;
   const whisListHandler = ()=>{
     setFlag(()=>!flag)
     if(flag){
@@ -24,30 +24,30 @@ function RecipeDetails({pdt,serv}) {
       dispatch(removeFromWishlist(pdt.id))
     }
   }
+
   const incServing = ()=>{
-  setServing(serving+1);
-  serv(serving+1);
+    setServing((oldServing)=>{
+       tempServing = oldServing+1;
+      if(tempServing>100){
+        tempServing = 100;
+      }
+    return tempServing;
+    })
+    serv(tempServing);
+
   }
 
   const decServing = ()=>{
     setServing((oldServing)=>{
-      let tempServing = oldServing-1;
+     tempServing = oldServing-1;
       if(tempServing < 1){
         tempServing = 1;
       }
     return tempServing;
     })
-    serv(serving-1)
+    serv(tempServing);
+
   }
-
-  // useEffect(() => {
-  //   console.log(serving);
-  //   dispatch(updateIngredient(serving))
-
-  // }, [serving,dispatch])
-
-  // const[count, setCount] = useState()
-
 
   return (
     <Fragment>

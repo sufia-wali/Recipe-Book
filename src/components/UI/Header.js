@@ -2,18 +2,17 @@ import React, { Fragment, useState } from 'react'
 import './Header.css';
 import logo from '../../Image/logo.webp';
 import search from '../../Image/search.png';
+import user from '../../Image/user.png';
 import bookmark from '../../Image/bookmark.png';
 import add from '../../Image/add.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { listItem } from '../actions/itemActions';
 import Error from '../Modal/Error';
 
-
 export default function Header() {
 
   const cart = useSelector(state => state.wishList)
   const { cartItems } = cart
-
   const [text, setText] = useState('');
 
   const dispatch = useDispatch()
@@ -69,10 +68,10 @@ export default function Header() {
                               <figure className="preview__fig">
                                 <img src={item.image_url} alt="img" />
                               </figure>
-                            <div className="preview__data">
-                              <h4 className="preview__title">{item.title}</h4>
-                              <p4 className="preview__publisher">{item.publisher}</p4>
-                            </div>
+                              <div className="preview__data">
+                                <h4 className="preview__title">{item.title}</h4>
+                                <p4 className="preview__publisher">{item.publisher}</p4>
+                              </div>
                             </span>
                           </li>
                         )
@@ -81,6 +80,13 @@ export default function Header() {
                   )
                 }
               </div>
+            </li>
+
+            <li className='nav__item'>
+              <button className="nav__btn nav__btn--login">
+                <img src={user} alt="user" className='nav__icon' />
+                <span>Login</span>
+              </button>
             </li>
           </ul>
         </nav>
